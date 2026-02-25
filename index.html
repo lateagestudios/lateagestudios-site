@@ -187,6 +187,22 @@
       header{ padding: 22px var(--gutter); }
       main{ padding: 70px var(--gutter) 84px; }
       .brand img{ height: 50px; }
+
+      /* Mobile header: stack logo above nav */
+      .topbar{
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      /* Mobile nav: let it wrap cleanly */
+      nav{
+        width: 100%;
+        justify-content: flex-start;
+        white-space: normal;
+        gap: 12px 18px;
+      }
+      nav a{ padding: 6px 0; }
+
       .mission p{ font-size: 17px; line-height: 1.65; }
     }
   </style>
