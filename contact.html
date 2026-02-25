@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact — Late Age Studios</title>
+  <meta name="description" content="Contact Late Age Studios for research inquiries, collaboration, and general correspondence." />
+
+  <!-- Fonts: Libre Baskerville (headlines) + Source Sans 3 (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root{
+      --bg: #ffffff;
+      --band: #f0f0ee;
+      --text: #111111;
+      --muted: #3f3f3f;
+      --label: #4a4a4a;
+      --rule: rgba(0,0,0,.10);
+      --maxw: 760px;
+      --gutter: clamp(20px, 6vw, 88px);
+
+      /* Shared hero band height across pages (desktop / large screens) */
+      --hero: clamp(420px, 58vh, 720px);
+    }
+
+    *{ box-sizing: border-box; }
+    html, body{ height: 100%; }
+    body{
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Source Sans 3", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    a:hover{ text-decoration: underline; text-underline-offset: 3px; }
+
+    /* Header */
+    header{
+      background: var(--bg);
+      padding: 22px var(--gutter);
+    }
+    .topbar{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand{
+      display: inline-flex;
+      align-items: center;
+      min-height: 52px;
+    }
+    .brand img{
+      height: 60px;
+      width: auto;
+      display: block;
+    }
+
+    nav{
+      display: flex;
+      gap: clamp(14px, 2vw, 26px);
+      align-items: center;
+      font-size: 15px;
+      letter-spacing: 0.01em;
+      color: var(--muted);
+      white-space: nowrap;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    nav a{ padding: 8px 0; }
+
+    /* Shared container */
+    .container{
+      max-width: var(--maxw);
+      margin: 0 var(--gutter);
+    }
+
+    /* Hero band */
+    .band{
+      background: var(--band);
+      min-height: var(--hero);
+      padding: 0 var(--gutter);
+      display: flex;
+      align-items: center;
+    }
+
+    h1{
+      font-family: "Libre Baskerville", Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      font-size: clamp(34px, 4.3vw, 46px);
+      line-height: 1.18;
+      margin: 0;
+    }
+    .subline{
+      margin: 16px 0 0 0;
+      font-size: 18px;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+      max-width: 56ch;
+    }
+
+    /* Body */
+    main{
+      padding: 96px var(--gutter) 110px;
+      background: var(--bg);
+    }
+
+    .section{
+      padding: 34px 0;
+      border-top: 1px solid var(--rule);
+    }
+    .section:first-child{
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .section-label{
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--label);
+      margin: 0 0 16px 0;
+    }
+
+    /* Form */
+    form{
+      margin-top: 14px;
+    }
+    .grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .field{
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    label{
+      font-size: 14px;
+      color: var(--label);
+    }
+    input, select, textarea{
+      font: inherit;
+      font-size: 16px;
+      padding: 12px 12px;
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--text);
+      outline: none;
+    }
+    input:focus, select:focus, textarea:focus{
+      border-color: rgba(0,0,0,.25);
+    }
+    textarea{
+      min-height: 180px;
+      resize: vertical;
+    }
+
+    .full{ grid-column: 1 / -1; }
+
+    .help{
+      font-size: 14px;
+      color: var(--muted);
+      margin-top: 10px;
+      max-width: 70ch;
+    }
+
+    .actions{
+      margin-top: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .check{
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      max-width: 70ch;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    .check input{
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      padding: 0;
+    }
+
+    button{
+      font: inherit;
+      font-size: 15px;
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1px solid rgba(0,0,0,.18);
+      background: #fff;
+      color: var(--text);
+      cursor: pointer;
+    }
+    button:hover{
+      border-color: rgba(0,0,0,.28);
+    }
+
+    /* Honeypot */
+    .hp{
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    @media (max-width: 860px){
+      :root{
+        --hero: clamp(320px, 42vh, 520px);
+      }
+      .brand img{ height: 50px; }
+      main{ padding: 70px var(--gutter) 84px; }
+      .grid{ grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="topbar">
+      <a class="brand" href="index.html" aria-label="Late Age Studios Home">
+        <img src="assets/img/LAlightlogo.png" alt="Late Age Studios logo">
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a href="publications.html">Publications</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" aria-current="page">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="band" aria-label="Contact header">
+    <div class="container">
+      <div>
+        <h1>Contact</h1>
+        <p class="subline">
+          For research collaboration, protocol access inquiries, media requests, or general correspondence.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <div class="container">
+
+      <section class="section" aria-label="Contact form">
+        <p class="section-label">Message</p>
+
+        <!--
+          ACTION: replace with your form handler endpoint when chosen.
+          Example (Formspree): action="https://formspree.io/f/xxxxxx"
+          Example (Getform):  action="https://getform.io/f/xxxxxx"
+        -->
+        <form method="POST" action="#">
+          <!-- Honeypot -->
+          <div class="hp" aria-hidden="true">
+            <label>Leave this field empty</label>
+            <input type="text" name="company" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="grid">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" autocomplete="name" required>
+            </div>
+
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" required>
+            </div>
+
+            <div class="field full">
+              <label for="intent">Inquiry Type</label>
+              <select id="intent" name="intent" required>
+                <option value="" selected disabled>Select an option</option>
+                <option>Research collaboration</option>
+                <option>Protocol access request</option>
+                <option>Publication / citation inquiry</option>
+                <option>Media</option>
+                <option>General</option>
+              </select>
+            </div>
+
+            <div class="field full">
+              <label for="subject">Subject</label>
+              <input id="subject" name="subject" type="text" required>
+            </div>
+
+            <div class="field full">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" required></textarea>
+            </div>
+          </div>
+
+          <p class="help">
+            Please include any relevant context, institutional affiliation (if applicable), and timelines. Submissions are reviewed as capacity permits.
+          </p>
+
+          <div class="actions">
+            <label class="check">
+              <input type="checkbox" name="consent" required>
+              <span>I understand that Late Age Studios will use the information provided here solely to respond to this inquiry.</span>
+            </label>
+
+            <button type="submit">Submit</button>
+          </div>
+
+          <p class="help" style="margin-top:16px;">
+            If you experience issues with the form, you may instead contact us at
+            <a href="mailto:contact@lateagestudios.com">contact@lateagestudios.com</a>.
+          </p>
+        </form>
+      </section>
+
+    </div>
+  </main>
+</body>
+</html>

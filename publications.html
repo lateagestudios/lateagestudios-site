@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Publications — Late Age Studios</title>
+  <meta name="description" content="Peer-reviewed articles, working papers, and public research communications from Late Age Studios." />
+
+  <!-- Fonts: Libre Baskerville (headlines) + Source Sans 3 (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root{
+      --bg: #ffffff;
+      --band: #f0f0ee;
+      --text: #111111;
+      --muted: #3f3f3f;
+      --label: #4a4a4a;
+      --rule: rgba(0,0,0,.10);
+      --maxw: 760px;
+      --gutter: clamp(20px, 6vw, 88px);
+
+      /* Shared hero band height across pages (desktop / large screens) */
+      --hero: clamp(420px, 58vh, 720px);
+    }
+
+    *{ box-sizing: border-box; }
+    html, body{ height: 100%; }
+    body{
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Source Sans 3", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    a:hover{ text-decoration: underline; text-underline-offset: 3px; }
+
+    /* Header */
+    header{
+      background: var(--bg);
+      padding: 22px var(--gutter);
+    }
+    .topbar{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand{
+      display: inline-flex;
+      align-items: center;
+      min-height: 52px;
+    }
+    .brand img{
+      height: 60px;
+      width: auto;
+      display: block;
+    }
+
+    nav{
+      display: flex;
+      gap: clamp(14px, 2vw, 26px);
+      align-items: center;
+      font-size: 15px;
+      letter-spacing: 0.01em;
+      color: var(--muted);
+      white-space: nowrap;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    nav a{ padding: 8px 0; }
+
+    /* Shared container */
+    .container{
+      max-width: var(--maxw);
+      margin: 0 var(--gutter);
+    }
+
+    /* Hero band */
+    .band{
+      background: var(--band);
+      min-height: var(--hero);
+      padding: 0 var(--gutter);
+      display: flex;
+      align-items: center;
+    }
+
+    h1{
+      font-family: "Libre Baskerville", Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      font-size: clamp(34px, 4.3vw, 46px);
+      line-height: 1.18;
+      margin: 0;
+    }
+    .subline{
+      margin: 16px 0 0 0;
+      font-size: 18px;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+
+    /* Body */
+    main{
+      padding: 96px var(--gutter) 110px;
+      background: var(--bg);
+    }
+
+    .section{
+      padding: 34px 0;
+      border-top: 1px solid var(--rule);
+    }
+    .section:first-child{
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .section-label{
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--label);
+      margin: 0 0 16px 0;
+    }
+
+    .container p{
+      margin: 0 0 18px 0;
+      font-size: 18px;
+      line-height: 1.65;
+      color: var(--text);
+    }
+    .container p:last-child{ margin-bottom: 0; }
+
+    /* Lists */
+    .publist{
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .pubitem{
+      padding: 16px 0;
+      border-top: 1px solid var(--rule);
+    }
+    .pubitem:first-child{
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .pubtitle{
+      font-size: 18px;
+      color: var(--text);
+      margin: 0 0 6px 0;
+    }
+    .pubmeta{
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+    .publinks{
+      margin-top: 8px;
+      font-size: 15px;
+      color: var(--muted);
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .tag{
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--label);
+      margin-bottom: 10px;
+    }
+
+    /* Small “status” note without looking like a placeholder */
+    .note{
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 860px){
+      :root{
+        --hero: clamp(320px, 42vh, 520px);
+      }
+      .brand img{ height: 50px; }
+      main{ padding: 70px var(--gutter) 84px; }
+      .container p{ font-size: 17px; line-height: 1.65; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="topbar">
+      <a class="brand" href="index.html" aria-label="Late Age Studios Home">
+        <img src="assets/img/LAlightlogo.png" alt="Late Age Studios logo">
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a href="publications.html" aria-current="page">Publications</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="band" aria-label="Publications header">
+    <div class="container">
+      <div>
+        <h1>Publications</h1>
+        <p class="subline">Peer-reviewed articles, working papers, and public research communications.</p>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <div class="container">
+
+      <section class="section" id="peer-reviewed">
+        <p class="section-label">Peer-Reviewed Articles</p>
+        <p class="note">
+          Peer-reviewed publication is an explicit objective of the current research phase. This page will index published articles as they appear, alongside associated datasets and supplementary materials where applicable.
+        </p>
+
+        <ul class="publist" aria-label="Peer-reviewed publications list">
+          <li class="pubitem">
+            <div class="tag">In preparation</div>
+            <p class="pubtitle">Narrative Governance under Scale: Structural Conditions for Human Judgment in System-Mediated Play</p>
+            <p class="pubmeta">
+              This paper articulates the structural hypothesis underlying Narrative Governance and examines the division of labor between system-mediated coordination and human interpretive judgment under scale.
+            </p>
+            <p class="pubmeta">
+              Manuscript in preparation.
+            </p>
+            <div class="publinks">
+              <span>Preprint: forthcoming</span>
+              <span>Supplement: forthcoming</span>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section class="section" id="working-papers">
+        <p class="section-label">Working Papers and Research Protocols</p>
+
+        <ul class="publist" aria-label="Working papers list">
+
+          <li class="pubitem">
+            <div class="tag">Available</div>
+            <p class="pubtitle">Research Doctrine Memo</p>
+            <p class="pubmeta">
+              A formal statement of the theoretical framework, research phases, and methodological commitments guiding the Narrative Governance program.
+            </p>
+            <div class="publinks">
+              <a href="assets/pdf/research-doctrine-memo-v1-2.pdf">Download PDF</a>
+            </div>
+          </li>
+
+          <li class="pubitem">
+            <div class="tag">Protocol — Phase I</div>
+            <p class="pubtitle">Phase I Experimental Protocol: Comparative Study of Structured Concurrency and Traditional Play</p>
+            <p class="pubmeta">
+              Phase I establishes empirical baselines through matched comparative trials at tabletop scale. Identical narrative scenarios are implemented under two structural conditions: Universal Initiative (UI) structured play and traditional structured play. Separate player cohorts participate in parallel implementations in order to isolate structural effects while preserving ecological validity.
+            </p>
+            <p class="pubmeta">
+              Following baseline comparison, an expanded Universal Initiative structured trial is conducted at increased participant scale (16 players) to observe participation distribution, interpretive load, and perceived agency under intensified concurrency.
+            </p>
+            <p class="pubmeta">
+              Data collection integrates qualitative assessments from both players and gamemasters alongside quantitative measures of temporal allocation and participation distribution. Detailed instrumentation, measurement frameworks, and operational specifications are available upon scholarly request for purposes of collaboration and critical review.
+            </p>
+            <div class="publinks" style="margin-top:10px;">
+              <a href="contact.html">Inquiries</a>
+            </div>
+          </li>
+
+        </ul>
+      </section>
+
+      <section class="section" id="public">
+        <p class="section-label">Public Communications</p>
+        <p class="note">
+          Public communications include program updates, research notes intended for general audiences, and announcements related to events and collaboration.
+        </p>
+
+        <ul class="publist" aria-label="Public communications list">
+          <li class="pubitem">
+            <div class="tag">Program note</div>
+            <p class="pubtitle">From Development to Research: A Studio Update</p>
+            <p class="pubmeta">
+              A public statement describing the transition into formal research and the goals of the Narrative Governance program.
+            </p>
+            <div class="publinks">
+              <a href="assets/pdf/from-development-to-research.pdf">Read</a>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+    </div>
+  </main>
+</body>
+</html>

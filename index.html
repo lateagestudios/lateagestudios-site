@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Late Age Studios</title>
+  <meta name="description" content="Independent research in Narrative Governance." />
+
+  <!-- Fonts: Libre Baskerville (headlines) + Source Sans 3 (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root{
+      --bg: #ffffff;
+      --band: #f0f0ee;        /* thesis band (subtle grey shift) */
+      --text: #111111;
+      --muted: #3f3f3f;
+      --label: #4a4a4a;
+      --rule: rgba(0,0,0,.10);
+      --maxw: 760px;
+      --gutter: clamp(20px, 6vw, 88px);
+
+      /* Shared hero band height across pages (desktop / large screens) */
+      --hero: clamp(420px, 58vh, 720px);
+    }
+
+    *{ box-sizing: border-box; }
+    html, body{ height: 100%; }
+    body{
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Source Sans 3", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    a:hover{ text-decoration: underline; text-underline-offset: 3px; }
+
+    /* Header */
+    header{
+      background: var(--bg);
+      padding: 22px var(--gutter);
+    }
+    .topbar{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand{
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 52px;
+    }
+    .brand img{
+      height: 60px;
+      width: auto;
+      display: block;
+    }
+
+    nav{
+      display: flex;
+      gap: clamp(14px, 2vw, 26px);
+      align-items: center;
+      font-size: 15px;
+      letter-spacing: 0.01em;
+      color: var(--muted);
+      white-space: nowrap;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    nav a{ padding: 8px 0; }
+
+    /* Layout containers */
+    .container{
+      max-width: var(--maxw);
+      margin: 0 var(--gutter);
+    }
+
+    /* Thesis band */
+    .band{
+      background: var(--band);
+      min-height: var(--hero);
+      padding: 0 var(--gutter);
+      display: flex;
+      align-items: center;
+    }
+
+    .headline{
+      font-family: "Libre Baskerville", Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      font-size: clamp(34px, 4.3vw, 52px);
+      line-height: 1.18;
+      margin: 0;
+    }
+
+    .subline{
+      margin: 22px 0 0 0;
+      font-size: 18px;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+
+    /* Mission section */
+    main{
+      padding: 96px var(--gutter) 110px;
+      background: var(--bg);
+    }
+
+    .section-label{
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--label);
+      margin: 0 0 18px 0;
+    }
+
+    .mission p{
+      margin: 0 0 18px 0;
+      font-size: 18px;
+      line-height: 1.65;
+      color: var(--text);
+    }
+    .mission p:last-child{ margin-bottom: 0; }
+
+    .mission p.closer{ margin-top: 28px; }
+
+    /* Pathways */
+    .pathways{
+      margin-top: 96px;
+      padding-top: 38px;
+      border-top: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 26px;
+    }
+    .card{
+      padding: 16px 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .card h3{
+      font-family: "Libre Baskerville", Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      font-size: 18px;
+      margin: 0 0 10px 0;
+    }
+    .card p{
+      margin: 0 0 12px 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+      flex-grow: 1;
+    }
+    .card a{
+      font-size: 15px;
+      color: var(--text);
+      letter-spacing: 0.01em;
+    }
+
+    /* Footer */
+    footer{
+      padding: 46px var(--gutter) 56px;
+      color: var(--muted);
+      font-size: 14px;
+      border-top: 1px solid var(--rule);
+    }
+
+    /* Responsive */
+    @media (max-width: 860px){
+      /* Smaller shared hero on mobile for ALL pages */
+      :root{
+        --hero: clamp(320px, 42vh, 520px);
+      }
+
+      .container{ margin: 0; }
+      .pathways{ grid-template-columns: 1fr; }
+      header{ padding: 22px var(--gutter); }
+      main{ padding: 70px var(--gutter) 84px; }
+      .brand img{ height: 50px; }
+      .mission p{ font-size: 17px; line-height: 1.65; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="topbar">
+      <a class="brand" href="index.html" aria-label="Late Age Studios Home">
+        <img src="assets/img/LAlightlogo.png" alt="Late Age Studios logo">
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <a href="research.html">Research</a>
+        <a href="publications.html">Publications</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="band" aria-label="Thesis">
+    <div class="container">
+      <h1 class="headline">
+        Systems manage structure.<br>
+        Humans govern meaning.
+      </h1>
+      <p class="subline">Independent research in Narrative Governance.</p>
+    </div>
+  </section>
+
+  <main>
+    <div class="container">
+      <p class="section-label">Mission</p>
+
+      <section class="mission" aria-label="Mission statement">
+        <p>
+          Late Age Studios conducts foundational research in Narrative Governance, the study of how human judgment sustains meaning within complex, system-mediated environments.
+        </p>
+
+        <p>
+          As interactive systems scale in concurrency, persistence, and visibility, the maintenance of coherent world state increasingly competes with the human work of interpreting intent, preserving agency, and exercising ethical closure. We refer to this structural burden as reality management.
+        </p>
+
+        <p>
+          Our research examines how formal infrastructures can manage state, temporal coordination, and perceptual distribution in ways that reduce reality management load while preserving human authority over interpretation and narrative resolution.
+        </p>
+
+        <p>
+          Through phased experimental protocols and proof-of-concept systems such as Universal Initiative, a concurrent and perception-gated framework, we generate replicable baseline data on concurrency, participation distribution, and agency preservation.
+        </p>
+
+        <p class="closer">
+          Systems are well suited to managing state, visibility, and temporal coordination. The interpretation of intent and the exercise of narrative judgment remain human responsibilities. Our work investigates the structures that allow that responsibility to remain human under scale.
+        </p>
+      </section>
+
+      <section class="pathways" aria-label="Primary site sections">
+        <div class="card" id="research">
+          <h3>Research</h3>
+          <p>Mission, core concepts, experimental protocols, and phased research structure.</p>
+          <a href="research.html">View Research</a>
+        </div>
+
+        <div class="card" id="publications">
+          <h3>Publications</h3>
+          <p>Articles, working papers, and public-facing research communications.</p>
+          <a href="publications.html">View Publications</a>
+        </div>
+
+        <div class="card" id="about">
+          <h3>About</h3>
+          <p>Institutional background, cultural history, field notes, and research posture.</p>
+          <a href="about.html">Learn More</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer id="contact">
+    <div class="container">
+      <div>Late Age Studios</div>
+      <div style="margin-top:10px;">
+        Contact: <a href="mailto:contact@lateagestudios.com">contact@lateagestudios.com</a>
+      </div>
+      <div style="margin-top:10px;">
+        © <span id="year"></span> Late Age Studios. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

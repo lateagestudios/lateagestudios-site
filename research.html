@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Research — Late Age Studios</title>
+  <meta name="description" content="Foundational inquiry in Narrative Governance: framework, infrastructure, phases, methodology, and documentation." />
+
+  <!-- Fonts: Libre Baskerville (headlines) + Source Sans 3 (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root{
+      --bg: #ffffff;
+      --band: #f0f0ee;
+      --text: #111111;
+      --muted: #3f3f3f;
+      --label: #4a4a4a;
+      --rule: rgba(0,0,0,.10);
+      --maxw: 760px;
+      --gutter: clamp(20px, 6vw, 88px);
+
+      /* Shared hero band height across pages (desktop / large screens) */
+      --hero: clamp(420px, 58vh, 720px);
+    }
+
+    *{ box-sizing: border-box; }
+    html, body{ height: 100%; }
+    body{
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Source Sans 3", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    a:hover{ text-decoration: underline; text-underline-offset: 3px; }
+
+    /* Header */
+    header{
+      background: var(--bg);
+      padding: 22px var(--gutter);
+    }
+    .topbar{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand{
+      display: inline-flex;
+      align-items: center;
+      min-height: 52px;
+    }
+    .brand img{
+      height: 60px;
+      width: auto;
+      display: block;
+    }
+
+    nav{
+      display: flex;
+      gap: clamp(14px, 2vw, 26px);
+      align-items: center;
+      font-size: 15px;
+      letter-spacing: 0.01em;
+      color: var(--muted);
+      white-space: nowrap;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    nav a{ padding: 8px 0; }
+
+    /* Shared container */
+    .container{
+      max-width: var(--maxw);
+      margin: 0 var(--gutter);
+    }
+
+    /* Research hero band: same height rhythm as landing page */
+    .band{
+      background: var(--band);
+      min-height: var(--hero);
+      padding: 0 var(--gutter);
+      display: flex;
+      align-items: center;
+    }
+
+    /* Band layout: title normal flow; TOC positioned to body edge without stealing width */
+    .band-inner{
+      position: relative;
+      padding-right: clamp(320px, 34vw, 380px); /* reserve space so TOC doesn't crowd headline */
+    }
+
+    h1{
+      font-family: "Libre Baskerville", Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      font-size: clamp(34px, 4.3vw, 46px);
+      line-height: 1.18;
+      margin: 0;
+    }
+    .subline{
+      margin: 16px 0 0 0;
+      font-size: 18px;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+
+    .toc{
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 240px; /* slightly narrower for more breathing room */
+
+      padding-left: 24px;           /* creates visual separation */
+      border-left: 1px solid var(--rule); /* optional, subtle divider */
+
+      max-height: calc(var(--hero) - 120px);
+      overflow: auto;
+    }
+    .toc-label{
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--label);
+      margin: 0 0 14px 0;
+    }
+    .toc a{
+      display: block;
+      font-size: 15px;
+      color: var(--muted);
+      padding: 7px 0;
+    }
+
+    /* Body */
+    main{
+      padding: 96px var(--gutter) 110px;
+      background: var(--bg);
+    }
+
+    .section{
+      padding: 34px 0;
+      border-top: 1px solid var(--rule);
+    }
+    .section:first-child{
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .section-label{
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--label);
+      margin: 0 0 16px 0;
+    }
+
+    .container p{
+      margin: 0 0 18px 0;
+      font-size: 18px;
+      line-height: 1.65;
+      color: var(--text);
+    }
+    .container p:last-child{ margin-bottom: 0; }
+
+    /* Ensure Phase Status line separates from Phase III */
+    .container p.phase-status{
+      margin-top: 34px;
+      color: var(--muted);
+    }
+
+    .phase h3{
+      font-family: "Libre Baskerville", Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      font-size: 18px;
+      margin: 18px 0 10px 0;
+    }
+
+    .docrow{
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 18px;
+      padding: 14px 0;
+      border-top: 1px solid var(--rule);
+      margin-top: 18px;
+    }
+    .docrow .name{
+      font-size: 16px;
+      color: var(--text);
+    }
+    .docrow .action{
+      font-size: 15px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .band-inner{
+        padding-right: 0;
+      }
+      .toc{
+        position: static;
+        width: auto;
+        max-height: none;
+        overflow: visible;
+        margin-top: 22px;
+        border-top: 1px solid var(--rule);
+        padding-top: 18px;
+      }
+    }
+
+    @media (max-width: 860px){
+      /* Smaller shared hero on mobile for ALL pages */
+      :root{
+        --hero: clamp(320px, 42vh, 520px);
+      }
+
+      .brand img{ height: 50px; }
+      main{ padding: 70px var(--gutter) 84px; }
+      .container p{ font-size: 17px; line-height: 1.65; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="topbar">
+      <a class="brand" href="index.html" aria-label="Late Age Studios Home">
+        <img src="assets/img/LAlightlogo.png" alt="Late Age Studios logo">
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="research.html" aria-current="page">Research</a>
+        <a href="publications.html">Publications</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="band" aria-label="Research header">
+    <div class="container">
+      <div class="band-inner">
+        <div>
+          <h1>Research</h1>
+          <p class="subline">Foundational inquiry in Narrative Governance.</p>
+        </div>
+
+        <aside class="toc" aria-label="Contents">
+          <p class="toc-label">Contents</p>
+          <a href="#overview">Research Overview</a>
+          <a href="#framework">Core Framework</a>
+          <a href="#infrastructure">Experimental Infrastructure</a>
+          <a href="#phases">Phased Research Program</a>
+          <a href="#methodology">Methodology</a>
+          <a href="#status">Current Status</a>
+          <a href="#documentation">Documentation</a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <div class="container">
+
+      <section class="section" id="overview">
+        <p class="section-label">Research Overview</p>
+        <p>
+          Research on tabletop role-playing games is most commonly situated within the broader field of Game Studies, which examines interactive systems, player agency, and collaborative narrative construction. Much of this scholarship focuses on identity, improvisation, and emergent storytelling within small-group play.
+        </p>
+        <p>
+          This initiative operates within that scholarly landscape while focusing on a structural dimension that has received comparatively limited formal treatment: the conditions under which narrative judgment remains human as systems scale in concurrency, persistence, and complexity.
+        </p>
+        <p>
+          Narrative Governance names the framework developed through this research. It examines the division of labor between systems that manage state, timing, and visibility, and humans who interpret intent, exercise judgment, and provide narrative closure.
+        </p>
+        <p>
+          Tabletop-scale play serves as the foundational laboratory for this inquiry. Its immediacy, interpretive transparency, and low barriers to entry make it the most direct environment in which to study narrative governance in practice. As experimental contexts expand in scale and complexity, findings are intended to inform and be informed by this baseline, maintaining continuity between small-group practice and larger system design.
+        </p>
+        <p>
+          The present phase of work is organized around experimental design, replicable baselines, and phased programmatic development.
+        </p>
+      </section>
+
+      <section class="section" id="framework">
+        <p class="section-label">Core Framework</p>
+        <p>
+          Narrative Governance, as introduced above, functions here as a working framework for examining the structural conditions under which interpretive authority remains human within system-mediated environments.
+        </p>
+        <p>
+          Within this framework, a central variable is reality management. Reality management refers to the structural burden of maintaining coherent world state, sensory continuity, and epistemic alignment among participants. In small-group contexts this burden is often distributed informally. As scale and concurrency increase, however, reality management demands intensify and may displace interpretive judgment.
+        </p>
+        <p>
+          The research therefore advances a structural hypothesis: that a clear division of labor can be maintained between systems that manage state persistence, timing coordination, and visibility distribution, and human participants who interpret intent, exercise judgment, and provide narrative closure. Experimental infrastructure is designed to test whether formal redistribution of reality management can preserve this division under increasing scale.
+        </p>
+        <p>
+          These terms are introduced as working concepts within an evolving research program and remain subject to refinement through experimental testing and scholarly engagement.
+        </p>
+      </section>
+
+      <section class="section" id="infrastructure">
+        <p class="section-label">Experimental Infrastructure</p>
+        <p>
+          Phase I experimentation is conducted through a proof-of-concept research instrument referred to as Universal Initiative (UI). UI is a concurrent and perception-gated framework designed to operationalize the structural hypothesis outlined above.
+        </p>
+        <p>
+          Rather than sequencing participation through traditional turn order, UI structures interaction around shared action windows in which participants act concurrently within a common world state. Resolution occurs at defined structural boundaries. This configuration allows systems to assume responsibility for state persistence, temporal coordination, and visibility distribution while preserving human authority over interpretive judgment and narrative closure.
+        </p>
+        <p>
+          UI is not presented as a finalized system, but as experimental infrastructure. Its purpose is to generate controlled conditions under which the redistribution of reality management can be observed, measured, and compared against traditional play baselines. By formalizing perception gating and concurrent action structures within a tabletop-scale environment, the instrument enables investigation into participation distribution, perceived agency, and interpretive load under scale.
+        </p>
+        <p>
+          As a laboratory framework, UI is intended to remain adaptable. Iterative refinement is guided by experimental findings rather than product objectives, ensuring alignment between theoretical claims and observable structural behavior.
+        </p>
+      </section>
+
+      <section class="section" id="phases">
+        <p class="section-label">Phased Research Program</p>
+        <p>
+          The research initiative is organized into phased development, allowing theoretical claims to be tested incrementally under controlled conditions.
+        </p>
+
+        <div class="phase">
+          <h3>Phase I — Foundational Structural Experiments</h3>
+          <p>
+            Phase I establishes empirical baselines at tabletop scale. Experiments focus on concurrency, perception gating, reality management redistribution, and participation distribution. Where feasible for scale, UI structured play is compared against matched traditional play baselines in order to isolate structural effects. Both qualitative assessments and quantitative measures are employed.
+          </p>
+        </div>
+
+        <div class="phase">
+          <h3>Phase II — Expanded Concurrency Contexts</h3>
+          <p>
+            Phase II extends structural experimentation beyond foundational baselines, examining increased participant counts, heightened epistemic segmentation, and more complex coordination demands. The objective is to observe how reality management load and interpretive authority behave as scale intensifies.
+          </p>
+        </div>
+
+        <div class="phase">
+          <h3>Phase III — Institutional Translation</h3>
+          <p>
+            Phase III investigates the applicability of Narrative Governance structures beyond tabletop-scale environments. This phase examines how findings may inform larger interactive systems, multiplayer digital environments, and other domains where interpretive authority and system mediation intersect.
+          </p>
+        </div>
+
+        <p class="phase-status">
+          The initiative is presently engaged in Phase I experimental refinement and protocol development.
+        </p>
+      </section>
+
+      <section class="section" id="methodology">
+        <p class="section-label">Methodology</p>
+        <p>
+          The methodological approach guiding this initiative is experimental and comparative. Structural claims are tested through controlled implementation at tabletop scale, using defined play structures rather than descriptive observation alone.
+        </p>
+        <p>
+          Where feasible for scale, concurrent and perception-gated configurations are evaluated alongside matched traditional play baselines. This comparative design allows structural variables to be isolated while preserving ecological validity within live play environments.
+        </p>
+        <p>
+          Data collection incorporates both qualitative and quantitative measures. Qualitative assessments examine both player and gamemaster evaluations of perceived agency, interpretive clarity, and narrative coherence. Quantitative measures include participation distribution, temporal allocation, and other observable structural indicators. The objective is not to replace interpretive evaluation with metrics, but to clarify the relationship between structural configuration and experiential outcome.
+        </p>
+        <p>
+          All findings are treated as provisional and subject to refinement through iteration, documentation, and scholarly critique.
+        </p>
+      </section>
+
+      <section class="section" id="status">
+        <p class="section-label">Current Status</p>
+        <p>
+          The initiative is presently engaged in Phase I experimental refinement and protocol development. Baseline data generation and comparative structural testing are ongoing.
+        </p>
+        <p>
+          Peer-reviewed publication of findings is an explicit objective of this phase. The research program is structured to support scholarly dissemination, interdisciplinary dialogue, and critical evaluation as the framework develops.
+        </p>
+        <p>
+          Scholars, designers, and practitioners interested in this work are encouraged to initiate dialogue as the program develops.
+        </p>
+      </section>
+
+      <section class="section" id="documentation">
+        <p class="section-label">Documentation</p>
+        <p>
+          The theoretical foundations and phased research structure of this initiative are formalized in the Research Doctrine Memo.
+        </p>
+
+        <div class="docrow">
+          <div class="name">Research Doctrine Memo (PDF)</div>
+          <a class="action" href="assets/pdf/research-doctrine-memo-v1-2.pdf">Download</a>
+        </div>
+
+        <p style="margin-top:18px;">
+          Additional technical documentation, including experimental protocols and instrumentation details, will be made available as publication and refinement progress.
+        </p>
+      </section>
+
+    </div>
+  </main>
+</body>
+</html>
