@@ -291,12 +291,15 @@
           Example (Formspree): action="https://formspree.io/f/xxxxxx"
           Example (Getform):  action="https://getform.io/f/xxxxxx"
         -->
-        <form method="POST" action="#">
+        <form method="POST" action="https://formspree.io/f/mrearnry">
           <!-- Honeypot -->
           <div class="hp" aria-hidden="true">
             <label>Leave this field empty</label>
             <input type="text" name="company" tabindex="-1" autocomplete="off">
           </div>
+          
+          <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <input type="hidden" name="_next" value="https://lateagestudios.com/thanks.html">
 
           <div class="grid">
             <div class="field">
@@ -306,7 +309,7 @@
 
             <div class="field">
               <label for="email">Email</label>
-              <input id="email" name="email" type="email" autocomplete="email" required>
+              <input id="email" name="_replyto" type="email" autocomplete="email" required>
             </div>
 
             <div class="field full">
@@ -357,3 +360,4 @@
 </body>
 
 </html>
+
