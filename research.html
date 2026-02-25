@@ -141,6 +141,30 @@
       padding: 7px 0;
     }
 
+    /* Mobile TOC (below hero) — hidden by default */
+    .toc-mobile{ display: none; }
+
+    .toc-mobile-box{
+      border-top: 1px solid var(--rule);
+      padding-top: 18px;
+      padding-bottom: 6px;
+    }
+
+    .toc-mobile-summary{
+      list-style: none;
+      cursor: pointer;
+      user-select: none;
+      padding: 14px 0 10px 0;
+    }
+    .toc-mobile-summary::-webkit-details-marker{ display: none; }
+
+    .toc-mobile-links a{
+      display: block;
+      font-size: 16px;
+      color: var(--muted);
+      padding: 10px 0;
+    }
+
     /* Body */
     main{
       padding: 96px var(--gutter) 110px;
@@ -253,6 +277,10 @@
       
       main{ padding: 70px var(--gutter) 84px; }
       .container p{ font-size: 17px; line-height: 1.65; }
+        
+      /* Mobile: hide hero TOC, show below-hero TOC */
+      .toc{ display: none; }
+      .toc-mobile{ display: block; }
     }
   </style>
 </head>
@@ -295,7 +323,27 @@
       </div>
     </div>
   </section>
+  
+  <section class="toc-mobile" aria-label="Contents">
+    <div class="container">
+      <details class="toc-mobile-box">
+        <summary class="toc-mobile-summary">
+          <span class="toc-label">Contents</span>
+        </summary>
 
+        <nav class="toc-mobile-links" aria-label="Contents links">
+          <a href="#overview">Research Overview</a>
+          <a href="#framework">Core Framework</a>
+          <a href="#infrastructure">Experimental Infrastructure</a>
+          <a href="#phases">Phased Research Program</a>
+          <a href="#methodology">Methodology</a>
+          <a href="#status">Current Status</a>
+          <a href="#documentation">Documentation</a>
+        </nav>
+      </details>
+    </div>
+  </section>
+  
   <main>
     <div class="container">
 
@@ -432,4 +480,5 @@
 </body>
 
 </html>
+
 
