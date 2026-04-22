@@ -54,6 +54,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 16px;
+      position: relative;
     }
     .brand{
       display: inline-flex;
@@ -64,6 +65,26 @@
       height: 60px;
       width: auto;
       display: block;
+    }
+
+    .menu-toggle{
+      display: none;
+      background: none;
+      border: 0;
+      padding: 8px;
+      margin: 0;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .menu-toggle span{
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
     }
 
     nav{
@@ -97,7 +118,7 @@
     /* Band layout: title normal flow; TOC positioned to body edge without stealing width */
     .band-inner{
       position: relative;
-      padding-right: clamp(320px, 34vw, 380px); /* reserve space so TOC doesn't crowd headline */
+      padding-right: clamp(320px, 34vw, 380px);
     }
 
     h1{
@@ -119,11 +140,9 @@
       right: 0;
       top: 50%;
       transform: translateY(-50%);
-      width: 240px; /* slightly narrower for more breathing room */
-
-      padding-left: 24px;           /* creates visual separation */
-      border-left: 1px solid var(--rule); /* optional, subtle divider */
-
+      width: 240px;
+      padding-left: 24px;
+      border-left: 1px solid var(--rule);
       max-height: calc(var(--hero) - 120px);
       overflow: auto;
     }
@@ -172,7 +191,6 @@
     }
     .container p:last-child{ margin-bottom: 0; }
 
-    /* Ensure Phase Status line separates from Phase III */
     .container p.phase-status{
       margin-top: 34px;
       color: var(--muted);
@@ -205,36 +223,54 @@
     }
 
     /* Responsive */
-    @media (max-width: 980px){
+    @media (max-width: 1100px){
       .band-inner{
         padding-right: 0;
       }
       .toc{
         position: static;
+        right: auto;
+        top: auto;
+        transform: none;
         width: auto;
         max-height: none;
         overflow: visible;
         margin-top: 22px;
+        border-left: 0;
         border-top: 1px solid var(--rule);
+        padding-left: 0;
         padding-top: 18px;
       }
     }
-    
+
     @media (max-width: 1040px){
-      .topbar{
-        flex-direction: column;
-        align-items: flex-start;
+      .menu-toggle{
+        display: inline-flex;
+        margin-left: auto;
       }
 
       nav{
+        display: none;
         width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
         justify-content: flex-start;
-        gap: 16px;
+        gap: 0;
+        padding-top: 14px;
+      }
+
+      nav.open{
+        display: flex;
+      }
+
+      nav a{
+        width: 100%;
+        padding: 10px 0;
+        border-top: 1px solid var(--rule);
       }
     }
-    
+
     @media (max-width: 860px){
-      /* Smaller shared hero on mobile for ALL pages */
       :root{
         --hero: clamp(320px, 42vh, 520px);
       }
@@ -253,7 +289,19 @@
         <img src="assets/img/LAlightlogo.png" alt="Late Age Studios logo">
       </a>
 
-      <nav aria-label="Primary navigation">
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="site-nav"
+        aria-label="Open navigation menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav id="site-nav" aria-label="Primary navigation">
         <a href="index.html">Home</a>
         <a href="research.html" aria-current="page">Research</a>
         <a href="narrative-governance.html">Narrative Governance</a>
@@ -437,5 +485,17 @@
 
     </div>
   </main>
+
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const siteNav = document.querySelector('#site-nav');
+
+    if (menuToggle && siteNav) {
+      menuToggle.addEventListener('click', () => {
+        const isOpen = siteNav.classList.toggle('open');
+        menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+    }
+  </script>
 </body>
 </html>
