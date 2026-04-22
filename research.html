@@ -107,7 +107,7 @@
       margin: 0 var(--gutter);
     }
 
-    /* Research hero band - restored original layout logic */
+    /* Research hero band - restore original desktop layout */
     .band{
       background: var(--band);
       min-height: var(--hero);
@@ -120,6 +120,10 @@
       position: relative;
       width: 100%;
       padding-right: clamp(320px, 34vw, 380px);
+    }
+
+    .hero-copy{
+      max-width: 100%;
     }
 
     h1{
@@ -270,14 +274,14 @@
       }
     }
 
-    /* Mobile / small screens - mobile-only tuning */
+    /* Mobile only - tune without touching desktop layout */
     @media (max-width: 860px){
       :root{
-        --hero: clamp(420px, 52vh, 560px);
+        --hero: clamp(430px, 54vh, 580px);
       }
 
       header{ padding: 22px 20px; }
-      .band{ padding: 0 16px; }
+      .band{ padding: 0 20px; }
       main{ padding: 70px 20px 84px; }
 
       .container{
@@ -288,24 +292,28 @@
       .container p{ font-size: 17px; line-height: 1.65; }
 
       .band-inner{
-        padding-right: 152px;
+        padding-right: 188px;
+      }
+
+      .hero-copy{
+        max-width: calc(100% - 188px);
       }
 
       h1{
-        font-size: 30px;
-        line-height: 1.14;
+        font-size: 32px;
+        line-height: 1.12;
       }
 
       .subline{
         margin-top: 14px;
         font-size: 16px;
-        line-height: 1.45;
-        max-width: 13ch;
+        line-height: 1.4;
+        max-width: 12ch;
       }
 
       .toc{
-        width: 136px;
-        padding-left: 12px;
+        width: 168px;
+        padding-left: 14px;
         max-height: none;
         overflow: visible;
       }
@@ -316,7 +324,7 @@
 
       .toc a{
         font-size: 13px;
-        line-height: 1.35;
+        line-height: 1.32;
         padding: 6px 0;
       }
     }
