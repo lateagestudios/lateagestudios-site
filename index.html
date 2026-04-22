@@ -17,15 +17,13 @@
   <style>
     :root{
       --bg: #ffffff;
-      --band: #f0f0ee;        /* thesis band (subtle grey shift) */
+      --band: #f0f0ee;
       --text: #111111;
       --muted: #3f3f3f;
       --label: #4a4a4a;
       --rule: rgba(0,0,0,.10);
       --maxw: 760px;
       --gutter: clamp(20px, 6vw, 88px);
-
-      /* Shared hero band height across pages (desktop / large screens) */
       --hero: clamp(420px, 58vh, 720px);
     }
 
@@ -48,17 +46,19 @@
     header{
       background: var(--bg);
       padding: 22px var(--gutter);
+      position: relative;
+      z-index: 20;
     }
     .topbar{
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
+      position: relative;
     }
     .brand{
       display: inline-flex;
       align-items: center;
-      gap: 12px;
       min-height: 52px;
     }
     .brand img{
@@ -67,16 +67,36 @@
       display: block;
     }
 
+    .menu-toggle{
+      display: none;
+      background: none;
+      border: 0;
+      padding: 8px;
+      margin: 0;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .menu-toggle span{
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+    }
+
     nav{
       display: flex;
       gap: clamp(14px, 2vw, 26px);
       align-items: center;
+      justify-content: flex-end;
       font-size: 15px;
       letter-spacing: 0.01em;
       color: var(--muted);
       white-space: nowrap;
       flex-wrap: wrap;
-      justify-content: flex-end;
     }
     nav a{ padding: 8px 0; }
 
@@ -132,8 +152,6 @@
     }
     .mission p:last-child{ margin-bottom: 0; }
 
-    .mission p.closer{ margin-top: 28px; }
-
     /* Pathways */
     .pathways{
       margin-top: 96px;
@@ -175,34 +193,57 @@
       border-top: 1px solid var(--rule);
     }
 
+    /* Mobile menu */
+    @media (max-width: 1040px){
+      .menu-toggle{
+        display: inline-flex;
+        margin-left: auto;
+      }
+
+      nav{
+        display: none;
+        position: absolute;
+        top: calc(100% + 10px);
+        right: 0;
+        width: min(340px, calc(100vw - (2 * var(--gutter))));
+        background: var(--bg);
+        border-top: 1px solid var(--rule);
+        z-index: 50;
+        padding: 0;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        gap: 0;
+      }
+
+      nav.open{
+        display: flex;
+      }
+
+      nav a{
+        display: block;
+        width: 100%;
+        padding: 16px 0;
+        border-top: 1px solid var(--rule);
+        font-size: 18px;
+        color: var(--muted);
+      }
+
+      nav a:first-child{
+        border-top: 0;
+      }
+    }
+
     /* Responsive */
     @media (max-width: 860px){
-      /* Smaller shared hero on mobile for ALL pages */
       :root{
         --hero: clamp(320px, 42vh, 520px);
       }
 
       .container{ margin: 0; }
       .pathways{ grid-template-columns: 1fr; }
-      header{ padding: 22px var(--gutter); }
-      main{ padding: 70px var(--gutter) 84px; }
       .brand img{ height: 50px; }
-
-      /* Mobile header: stack logo above nav */
-      .topbar{
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      /* Mobile nav: let it wrap cleanly */
-      nav{
-        width: 100%;
-        justify-content: flex-start;
-        white-space: normal;
-        gap: 12px 18px;
-      }
-      nav a{ padding: 6px 0; }
-
+      main{ padding: 70px var(--gutter) 84px; }
       .mission p{ font-size: 17px; line-height: 1.65; }
     }
   </style>
@@ -215,8 +256,21 @@
         <img src="assets/img/LAlightlogo.png" alt="Late Age Studios logo">
       </a>
 
-      <nav aria-label="Primary navigation">
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="site-nav"
+        aria-label="Open navigation menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav id="site-nav" aria-label="Primary navigation">
         <a href="research.html">Research</a>
+        <a href="narrative-governance.html">Narrative Governance</a>
         <a href="publications.html">Publications</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
@@ -234,41 +288,47 @@
     </div>
   </section>
 
- <main>
-  <div class="container">
-    <p class="section-label">Mission</p>
+  <main>
+    <div class="container">
+      <p class="section-label">Mission</p>
 
-    <section class="mission" aria-label="Mission statement">
-      <p>
-        Late Age Studios conducts foundational research in <strong>Narrative Governance</strong>, the study of how human participants interpret intent, exercise judgment, and construct shared meaning within interactive systems.
-      </p>
+      <section class="mission" aria-label="Mission statement">
+        <p>
+          Late Age Studios conducts foundational research in <strong>Narrative Governance</strong>, the study of how human participants interpret intent, exercise judgment, and construct shared meaning within interactive systems.
+        </p>
 
-      <p>
-        Across all forms of play, participants continuously make decisions about what actions mean, how events relate, and when outcomes are resolved. These decisions are not mechanical. They are acts of interpretation, negotiation, and closure. We treat this process as a craft skill, expressed differently across centralized, distributed, and embedded forms of play, but unified by a common requirement: the human governance of meaning.
-      </p>
+        <p>
+          Across all forms of play, participants continuously make decisions about what actions mean, how events relate, and when outcomes are resolved. These decisions are not mechanical. They are acts of interpretation, negotiation, and closure. We treat this process as a <strong>craft skill</strong>, expressed differently across centralized, distributed, and embedded forms of play, but unified by a common requirement: the human governance of meaning.
+        </p>
 
-      <p>
-        As systems scale in concurrency, persistence, and visibility, this interpretive work occurs under increasing structural pressure. The maintenance and synchronization of world state, what we term <strong>Reality Management</strong>, competes with and constrains the exercise of Narrative Governance.
-      </p>
+        <p>
+          As systems scale in concurrency, persistence, and visibility, this interpretive work occurs under increasing structural pressure. The maintenance and synchronization of world state, what we term <strong>Reality Management</strong>, competes with and constrains the exercise of Narrative Governance.
+        </p>
 
-      <p>
-        Our research investigates how system design reshapes this relationship. We examine how formal infrastructures can manage state, temporal coordination, and perceptual distribution in ways that support, rather than displace, human judgment.
-      </p>
+        <p>
+          Our research investigates how system design reshapes this relationship. We examine how formal infrastructures can manage state, temporal coordination, and perceptual distribution in ways that support, rather than displace, human judgment.
+        </p>
 
-      <p>
-        Through phased experimental protocols and proof-of-concept systems, we study how changes in coordination structure affect the performance, distribution, and limits of Narrative Governance as a human activity.
-      </p>
+        <p>
+          Through phased experimental protocols and proof-of-concept systems, we study how changes in coordination structure affect the performance, distribution, and limits of Narrative Governance as a human activity.
+        </p>
 
-      <p>
-        Systems are well suited to maintaining state, visibility, and synchronization. The interpretation of intent, the negotiation of meaning, and the exercise of narrative judgment remain human responsibilities. Our work focuses on understanding and preserving that capacity under scale.
-      </p>
-    </section>
+        <p>
+          Systems are well suited to maintaining state, visibility, and synchronization. The interpretation of intent, the negotiation of meaning, and the exercise of narrative judgment remain human responsibilities. Our work focuses on understanding and preserving that capacity under scale.
+        </p>
+      </section>
 
       <section class="pathways" aria-label="Primary site sections">
         <div class="card" id="research">
           <h3>Research</h3>
           <p>Mission, core concepts, experimental protocols, and phased research structure.</p>
           <a href="research.html">View Research</a>
+        </div>
+
+        <div class="card" id="narrative-governance">
+          <h3>Narrative Governance</h3>
+          <p>Definition, craft operations, interpretive practice, and the human work of meaning-making.</p>
+          <a href="narrative-governance.html">What Is Narrative Governance?</a>
         </div>
 
         <div class="card" id="publications">
@@ -300,6 +360,16 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    const menuToggle = document.querySelector('.menu-toggle');
+    const siteNav = document.querySelector('#site-nav');
+
+    if (menuToggle && siteNav) {
+      menuToggle.addEventListener('click', () => {
+        const isOpen = siteNav.classList.toggle('open');
+        menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+    }
   </script>
 </body>
 </html>
