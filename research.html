@@ -114,15 +114,12 @@
       padding: 0 var(--gutter);
       display: flex;
       align-items: center;
-      overflow: hidden;
     }
 
     .band-inner{
+      position: relative;
       width: 100%;
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 240px;
-      gap: clamp(32px, 6vw, 56px);
-      align-items: center;
+      padding-right: clamp(320px, 34vw, 380px);
     }
 
     .hero-copy{
@@ -132,13 +129,13 @@
     h1{
       font-family: "Libre Baskerville", Georgia, "Times New Roman", serif;
       font-weight: 400;
-      font-size: clamp(34px, 4.3vw, 52px);
+      font-size: clamp(34px, 4.3vw, 46px);
       line-height: 1.18;
       margin: 0;
     }
 
     .subline{
-      margin: 22px 0 0 0;
+      margin: 16px 0 0 0;
       font-size: 18px;
       color: var(--muted);
       letter-spacing: 0.02em;
@@ -147,11 +144,15 @@
     }
 
     .toc{
-      min-width: 0;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
       width: 240px;
-      padding-left: 20px;
+      padding-left: 24px;
       border-left: 1px solid var(--rule);
-      align-self: center;
+      max-height: calc(var(--hero) - 120px);
+      overflow: auto;
     }
     .toc-label{
       font-size: 12px;
@@ -273,38 +274,30 @@
       }
     }
 
-    /* Responsive */
+    /* Mobile / small screens */
     @media (max-width: 860px){
       :root{
         --hero: clamp(320px, 42vh, 520px);
       }
-      
-      header{ padding: 22px 20px; }
-      .band{ padding: 0 20px; }
-      main{ padding: 70px 20px 84px; }
-
-      .container{
-        margin: 0;
-      }
 
       .brand img{ height: 50px; }
+      main{ padding: 70px var(--gutter) 84px; }
       .container p{ font-size: 17px; line-height: 1.65; }
 
       .band-inner{
-        grid-template-columns: minmax(0, 1fr) 160px;
-        gap: 16px;
+        padding-right: 170px;
       }
 
       .toc{
-        width: 160px;
-        padding-left: 12px;
+        width: 150px;
+        padding-left: 14px;
       }
 
       .toc a{
         font-size: 14px;
         padding: 8px 0;
       }
-      
+
       .subline{
         font-size: 17px;
         max-width: 16ch;
