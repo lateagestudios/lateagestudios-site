@@ -104,30 +104,23 @@
     /* Shared container */
     .container{
       max-width: var(--maxw);
-      margin: 0 auto;
-      padding: 0 var(--gutter);
+      margin: 0 var(--gutter);
     }
 
     /* Research hero band */
     .band{
       background: var(--band);
       min-height: var(--hero);
-      padding: 0;
+      padding: 0 var(--gutter);
       display: flex;
       align-items: center;
     }
 
+    /* Original positioning model, with corrected desktop reserve */
     .band-inner{
       position: relative;
       width: 100%;
-      /* Reserve exact TOC width + gap so TOC right edge aligns with body text edge */
-      padding-right: 288px;
-    }
-
-    .hero-copy{
-      min-width: 0;
-      max-width: 100%;
-      padding-right: 8px;
+      padding-right: 284px;
     }
 
     h1{
@@ -143,8 +136,7 @@
       font-size: 18px;
       color: var(--muted);
       letter-spacing: 0.02em;
-      line-height: 1.5;
-      max-width: none;
+      line-height: 1.45;
       white-space: nowrap;
     }
 
@@ -153,8 +145,8 @@
       right: 0;
       top: 50%;
       transform: translateY(-50%);
-      width: 240px;
-      padding-left: 24px;
+      width: 228px;
+      padding-left: 20px;
       border-left: 1px solid var(--rule);
       max-height: calc(var(--hero) - 120px);
       overflow: auto;
@@ -178,7 +170,7 @@
 
     /* Body */
     main{
-      padding: 96px 0 110px;
+      padding: 96px var(--gutter) 110px;
       background: var(--bg);
     }
 
@@ -279,38 +271,35 @@
       }
     }
 
-    /* Mobile only - keep grey band fixed, push TOC right, give heading more room */
+    /* Mobile only */
     @media (max-width: 860px){
       :root{
         --hero: clamp(320px, 42vh, 520px);
       }
 
       header{ padding: 22px 20px; }
-      main{ padding: 70px 0 84px; }
+      .band{ padding: 0; }
+      main{ padding: 70px var(--gutter) 84px; }
 
       .container{
-        padding: 0 20px;
+        margin: 0 20px;
       }
 
       .brand img{ height: 50px; }
       .container p{ font-size: 17px; line-height: 1.65; }
 
-      .band{
-        padding: 0;
+      /* Push heading slightly left, TOC farther right, keep band unchanged */
+      .band .container{
+        margin: 0 12px;
       }
 
       .band-inner{
-        padding-right: 146px;
-        padding-left: 6px;
-      }
-
-      .hero-copy{
-        padding-right: 8px;
+        padding-right: 144px;
       }
 
       h1{
         font-size: 32px;
-        line-height: 1.12;
+        line-height: 1.14;
       }
 
       .subline{
@@ -324,7 +313,7 @@
       .toc{
         width: 126px;
         padding-left: 12px;
-        max-height: calc(var(--hero) - 100px);
+        max-height: calc(var(--hero) - 96px);
         overflow: auto;
       }
 
@@ -373,7 +362,7 @@
   <section class="band" aria-label="Research header">
     <div class="container">
       <div class="band-inner">
-        <div class="hero-copy">
+        <div>
           <h1>Research</h1>
           <p class="subline">Foundational inquiry in Narrative Governance.</p>
         </div>
