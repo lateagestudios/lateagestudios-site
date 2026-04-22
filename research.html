@@ -278,26 +278,33 @@
       :root{
         --hero: clamp(320px, 42vh, 520px);
       }
+      
+      header{ padding: 22px 20px; }
+      .band{ padding: 0 20px; }
+      main{ padding: 70px 20px 84px; }
+
+      .container{
+        margin: 0;
+      }
 
       .brand img{ height: 50px; }
-      main{ padding: 70px var(--gutter) 84px; }
       .container p{ font-size: 17px; line-height: 1.65; }
 
       .band-inner{
-        grid-template-columns: minmax(0, 1fr) 180px;
-        gap: 24px;
+        grid-template-columns: minmax(0, 1fr) 160px;
+        gap: 16px;
       }
 
       .toc{
-        width: 180px;
-        padding-left: 16px;
+        width: 160px;
+        padding-left: 12px;
       }
 
       .toc a{
         font-size: 14px;
         padding: 8px 0;
       }
-
+      
       .subline{
         font-size: 17px;
         max-width: 16ch;
