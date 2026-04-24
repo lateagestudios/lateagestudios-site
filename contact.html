@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact — Late Age Studios</title>
+  <meta name="description" content="PAGE DESCRIPTION HERE." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+
+<body>
+  <header>
+    <div class="topbar">
+      <a class="brand" href="index.html" aria-label="Late Age Studios Home">
+        <img src="assets/img/LAlightlogo.png" alt="Late Age Studios logo">
+      </a>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="site-nav"
+        aria-label="Open navigation menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav id="site-nav" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a href="narrative-governance.html">Narrative Governance</a>
+        <a href="publications.html">Publications</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="band">
+  <div class="container">
+    <h1 class="headline">Contact</h1>
+    <p class="subline">
+      For research collaboration, protocol access inquiries, media requests, or general correspondence.
+    </p>
+  </div>
+</section>
+
+<main>
+  <div class="container content">
+
+    <section class="section" id="message">
+      <p class="section-label">Message</p>
+
+      <form id="contact-form" method="POST" action="https://formspree.io/f/mrearnry">
+        <input type="hidden" name="_next" value="https://lateagestudios.com/thanks.html">
+
+        <div class="hp" aria-hidden="true">
+          <label>Leave this field empty</label>
+          <input type="text" name="company" tabindex="-1" autocomplete="off">
+        </div>
+
+        <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <div class="grid">
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required>
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="_replyto" type="email" autocomplete="email" required>
+          </div>
+
+          <div class="field full">
+            <label for="intent">Inquiry Type</label>
+            <select id="intent" name="intent" required>
+              <option value="" selected disabled>Select an option</option>
+              <option>Research collaboration</option>
+              <option>Protocol access request</option>
+              <option>Publication / citation inquiry</option>
+              <option>Media</option>
+              <option>General</option>
+            </select>
+          </div>
+
+          <div class="field full">
+            <label for="subject">Subject</label>
+            <input id="subject" name="subject" type="text" required>
+          </div>
+
+          <div class="field full">
+            <label for="message-text">Message</label>
+            <textarea id="message-text" name="message" required></textarea>
+          </div>
+        </div>
+
+        <p class="help">
+          Please include any relevant context, institutional affiliation if applicable, and timelines. Submissions are reviewed as capacity permits.
+        </p>
+
+        <div class="actions">
+          <label class="check">
+            <input type="checkbox" name="consent" required>
+            <span>I understand that Late Age Studios will use the information provided here solely to respond to this inquiry.</span>
+          </label>
+
+          <button type="submit">Submit</button>
+          <p id="form-status" class="help form-status"></p>
+        </div>
+
+        <p class="help form-fallback">
+          If you experience issues with the form, you may instead contact us at
+          <a href="mailto:contact@lateagestudios.com">contact@lateagestudios.com</a>.
+        </p>
+      </form>
+    </section>
+
+  </div>
+</main>
+
+<script>
+  (function(){
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
+
+    if (!form) return;
+
+    form.addEventListener('submit', async function(e){
+      e.preventDefault();
+
+      if (status) status.textContent = "Sending...";
+
+      try {
+        const data = new FormData(form);
+
+        const resp = await fetch(form.action, {
+          method: "POST",
+          body: data,
+          headers: { "Accept": "application/json" }
+        });
+
+        if (resp.ok) {
+          window.location.href = "https://lateagestudios.com/thanks.html";
+          return;
+        }
+
+        if (status) status.textContent = "Submission failed. Please email contact@lateagestudios.com instead.";
+      } catch (err) {
+        if (status) status.textContent = "Submission failed. Please email contact@lateagestudios.com instead.";
+      }
+    });
+  })();
+</script>
+
+  <footer>
+    <div class="container">
+      <div>Late Age Studios</div>
+      <div style="margin-top:10px;">
+        Contact: <a href="mailto:contact@lateagestudios.com">contact@lateagestudios.com</a>
+      </div>
+      <div style="margin-top:10px;">
+        © <span id="year"></span> Late Age Studios. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/site.js"></script>
+</body>
+</html>
