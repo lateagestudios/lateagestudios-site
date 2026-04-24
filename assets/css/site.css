@@ -555,7 +555,7 @@ footer{
   .hero-with-toc{
     grid-template-columns: minmax(0, 1fr) var(--toc-width-mobile);
     gap: var(--toc-gap-mobile);
-    align-items: start;
+    align-items: center;
   }
 
   .toc{
